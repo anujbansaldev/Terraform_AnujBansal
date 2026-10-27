@@ -9,6 +9,6 @@ output "frontend_url" {
 }
 
 output "backend_url" {
-  description = "URL for the Flask API health endpoint."
-  value       = "http://${aws_instance.application.public_ip}:5000/api/health"
+  description = "Private Flask API health endpoint, reachable locally on the instance and through Express."
+  value       = "http://127.0.0.1:5000/api/health"
 }

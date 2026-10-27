@@ -16,7 +16,7 @@ variable "ami_id" {
 variable "instance_type" {
   description = "EC2 instance type."
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 variable "key_name" {
@@ -26,6 +26,12 @@ variable "key_name" {
     condition     = length(trimspace(var.key_name)) > 0
     error_message = "key_name must name an existing EC2 key pair."
   }
+}
+
+variable "ssm_instance_profile_name" {
+  description = "Existing IAM instance profile containing AmazonSSMManagedInstanceCore. Managed outside this module."
+  type        = string
+  default     = "TerraformAssignmentEC2SSMProfile"
 }
 
 variable "trusted_ip_cidr" {

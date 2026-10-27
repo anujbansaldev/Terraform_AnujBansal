@@ -1,6 +1,7 @@
 """Small Flask API used by all assignment deployment stages."""
 
 from datetime import datetime, timezone
+import os
 import re
 
 from flask import Flask, jsonify, request
@@ -47,4 +48,8 @@ def submit():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(
+        host=os.getenv("FLASK_HOST", "0.0.0.0"),
+        port=int(os.getenv("FLASK_PORT", "5000")),
+        debug=False,
+    )

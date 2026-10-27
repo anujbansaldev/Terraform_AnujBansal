@@ -12,6 +12,10 @@ provider "aws" {
   region = var.aws_region
 }
 
+data "aws_iam_instance_profile" "ssm" {
+  name = var.ssm_instance_profile_name
+}
+
 data "aws_vpc" "default" {
   default = true
 }
@@ -44,14 +48,6 @@ resource "aws_security_group" "application" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
-    description = "Flask backend"
-    from_port   = 5000
-    to_port     = 5000
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
   egress {
     description = "Allow outbound application traffic"
     from_port   = 0
@@ -68,6 +64,7 @@ resource "aws_instance" "application" {
   subnet_id                   = data.aws_subnets.default.ids[0]
   vpc_security_group_ids      = [aws_security_group.application.id]
   associate_public_ip_address = true
+  iam_instance_profile        = data.aws_iam_instance_profile.ssm.name
   user_data = templatefile("${path.module}/user-data.sh", {
     application_source_url = var.application_source_url
     application_source_ref = var.application_source_ref
