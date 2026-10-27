@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact form</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Contact the team</h1>
+    <p>Express frontend → Flask backend</p>
+    <% if (error) { %>
+      <div class="error"><strong><%= error.message %></strong>
+        <% if (error.fields) { %><ul><% Object.values(error.fields).forEach(function(field) { %><li><%= field %></li><% }) %></ul><% } %>
+      </div>
+    <% } %>
+    <form method="post" action="/submit">
+      <label>Name <input name="name" value="<%= form.name || '' %>" required maxlength="100"></label>
+      <label>Email <input type="email" name="email" value="<%= form.email || '' %>" required></label>
+      <label>Message <textarea name="message" required maxlength="2000"><%= form.message || '' %></textarea></label>
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+</body>
+</html>

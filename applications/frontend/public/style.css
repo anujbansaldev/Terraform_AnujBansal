@@ -1,0 +1,7 @@
+body { background: #f3f4f6; color: #172033; font: 16px system-ui, sans-serif; margin: 0; padding: 2rem; }
+.card { background: white; border-radius: 12px; box-shadow: 0 4px 18px #0001; margin: auto; max-width: 560px; padding: 2rem; }
+label { display: block; font-weight: 600; margin: 1rem 0; }
+input, textarea { box-sizing: border-box; display: block; margin-top: .35rem; padding: .7rem; width: 100%; }
+textarea { min-height: 130px; }
+button { background: #2563eb; border: 0; border-radius: 6px; color: white; cursor: pointer; padding: .7rem 1.2rem; }
+.error { background: #fee2e2; border-radius: 6px; color: #991b1b; padding: .8rem; }
