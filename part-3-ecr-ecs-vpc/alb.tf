@@ -7,7 +7,7 @@ resource "aws_lb" "this" {
 }
 
 resource "aws_lb_target_group" "frontend" {
-  name        = "${local.name}-fe-tg"
+  name        = "tf-p3-frontend-tg"
   port        = 3000
   protocol    = "HTTP"
   target_type = "ip"
@@ -19,7 +19,7 @@ resource "aws_lb_target_group" "frontend" {
 }
 
 resource "aws_lb_target_group" "backend" {
-  name        = "${local.name}-be-tg"
+  name        = "tf-p3-backend-tg"
   port        = 5000
   protocol    = "HTTP"
   target_type = "ip"
