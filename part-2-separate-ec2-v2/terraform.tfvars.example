@@ -1,0 +1,23 @@
+aws_region = "ap-south-1"
+
+instance_type = "t3.micro"
+
+# Existing AWS key pair name; do not put a private key in this directory.
+key_name = "REPLACE_WITH_EXISTING_KEY_PAIR_NAME"
+
+# Prefer your current public IP with /32 for SSH.
+trusted_ssh_cidr = "203.0.113.10/32"
+
+# CIDR allowed to access Express on port 3000.
+client_cidr = "203.0.113.10/32"
+
+# The subnet must belong to vpc_id and have a default route through an IGW.
+vpc_id    = "vpc-REPLACE_WITH_TARGET_VPC"
+subnet_id = "subnet-REPLACE_WITH_PUBLIC_SUBNET"
+
+# Public HTTPS repository containing applications/backend and applications/frontend.
+application_source_url = "https://github.com/REPLACE_WITH_OWNER/REPLACE_WITH_REPOSITORY.git"
+application_source_ref = "main"
+
+# Installed separately from the shared requirements.txt, pinned for repeatability.
+gunicorn_version = "22.0.0"
