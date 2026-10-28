@@ -1,0 +1,5 @@
+aws_region     = "ap-south-1"
+project_name   = "terraform-assignment-part-3"
+backend_image  = "ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/terraform-assignment-part-3-backend:2026-10-28"
+frontend_image = "ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/terraform-assignment-part-3-frontend:2026-10-28"
+desired_count  = 1
